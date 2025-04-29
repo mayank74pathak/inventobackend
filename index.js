@@ -11,12 +11,15 @@ const app = express();
 const router = require('./Routes/router');
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: 'https://jocular-jalebi-3d290e.netlify.app',
+  credentials: true // only if you're sending cookies or auth tokens
+}));
 app.use(express.json());
 app.use(router);
 
 // Dynamic port for deployment (Render, Vercel, etc.)
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Start server
 app.listen(PORT, () => {
